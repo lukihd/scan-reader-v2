@@ -11,3 +11,5 @@ How is he made of ?
 Python3 and flask in fact. All I need is a website to download locally scans. So they're availables anywhere on earth.
 
 Useless right ? I know.
+
+ONLY WORKING ON https://www.scan-vf.net/ and (for complexity)

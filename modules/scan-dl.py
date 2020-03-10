@@ -2,6 +2,18 @@ from bs4 import BeautifulSoup
 from pathlib import Path
 import shutil
 import urllib3
+import argparse
+
+'''
+Command line argument
+'''
+parser = argparse.ArgumentParser(usage="Downloader script for scan reader app")
+# Set arguments
+parser.add_argument("--name", help="Name of the manga as it's wrote in the website url", type=str)
+parser.add_argument("--start", help="Start chapter to download", type=int)
+parser.add_argument("--end", help="End chapter to download", type=int)
+parser.add_argument("--path", help="Directory path to download", type=str)
+parser.add_argument("--isHome", help="Is downloaded to home directory", type=bool)
 
 '''
 function checkDir         - Check if a directory with the name of the manga is created
@@ -90,7 +102,7 @@ def manager(name, startChapter, endChapter, dirPath, isHome):
   print(path)
   # Start parse chapter and download each page of each chapter
   currentChapter = startChapter
-  while currentChapter < endChapter: 
+  while currentChapter <= endChapter: 
     scans = getUrl(f"https://www.scan-vf.net/{name}/chapitre-{currentChapter}")
     for scan in scans:
       if currentChapter < 10: 
@@ -103,6 +115,27 @@ def manager(name, startChapter, endChapter, dirPath, isHome):
     print('Chapter downloaded')
   print('Operation complete')
 
-# TEST WORKING
-manager('one_piece', 1, 10, '.scan-r2', True)
 
+def launchScript(args):
+  if not args.name:
+    print("Error: missing manga name")
+    return
+  elif not args.start:
+    print("Error: missing start chapter")
+    return
+  elif not args.end:
+    print("Error: missing end chapter")
+    return
+  elif not args.path:
+    print("Error: missing path")
+    return
+  elif not args.isHome:
+    print("Error: missing isHome option")
+    return
+  # launch download
+  manager(args.name, args.start, args.end, args.path, args.isHome)
+
+# get args
+args = parser.parse_args()
+# start script
+launchScript(args)
