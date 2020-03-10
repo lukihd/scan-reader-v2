@@ -1,0 +1,25 @@
+{
+  "name": "scan-reader-v2",
+  "version": "0.1.0",
+  "description": "What is scan-reader-v2 ?",
+  "main": "app.js",
+  "scripts": {
+    "start": "electron app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lukihd/scan-reader-v2.git"
+  },
+  "author": "lukihd",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/lukihd/scan-reader-v2/issues"
+  },
+  "homepage": "https://github.com/lukihd/scan-reader-v2#readme",
+  "devDependencies": {
+    "electron": "^8.1.1"
+  },
+  "dependencies": {
+    "python-shell": "^1.0.8"
+  }
+}

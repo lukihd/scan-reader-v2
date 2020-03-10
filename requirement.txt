@@ -2,3 +2,4 @@ beautifulsoup4
 urllib3
 shutil
 pathlib
+argparse
